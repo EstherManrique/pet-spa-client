@@ -1,22 +1,13 @@
 import React, { useEffect, useState, AriaAttributes, DOMAttributes } from 'react';
 import GoogleMapReact from 'google-map-react';
+import { Store } from '../../helpers/interfaces';
+
 
 declare module 'react' {
   interface HTMLAttributes<T> extends AriaAttributes, DOMAttributes<T> {
     lat?: number,
     lng?: number
   }
-}
-
-interface Store {
-  _id: string,
-  name: string,
-  address: string,
-  email: string,
-  phone: number,
-  location: string,
-  createdAt: string,
-  updatedAt: string
 }
 
 const ListStores = () => {
