@@ -1,64 +1,44 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import useFetch from 'react-fetch-hook';
-
-// import useFetchMy from '../../helpers/useFetchMy';
+// import useFetch from 'react-fetch-hook';
 
 
-// interface Store {  
-// _id: string,
-// name: string,
-// address: string,
-// email: string,
-// phone: number,
-// location: string,
-// }
+interface Store {
+  _id: string,
+  name: string,
+  address: string,
+  email: string,
+  phone: number,
+  location: string,
+  createdAt: string,
+  updatedAt: string
 
-// type StoreApiResponse = {  
-// _id: string,
-// name: string,
-// address: string,
-// email: string,
-// phone: number,
-// location: string,
-// }
-
+}
 
 const ListStores = () => {
 
-/*   const [stores, setStores] = useState([])
+  const [stores, setStores] = useState<Store[]>([]);
 
   const loadStores = async () => {
-
-    console.log('Works!');
-    const res = await fetch('http://localhost:3001/api/stores', {
-      mode: 'no-cors',
-      'headers': {
-        'Access-Control-Allow-Origin': '*',
-      }
-    })
-    console.log(res);
+    const res = await axios.get('http://localhost:3001/api/stores');
+    setStores(res.data)
+    console.log(res.data);
   }
   useEffect(() => {
-    loadStores()
-  }, []); */
+    loadStores();
+  }, []);
 
-  const options = {
-    mode: 'no-cors',
-    'headers': {
-      'Access-Control-Allow-Origin': '*',
-    }
-  }
-  const loadStores = useFetch('http://localhost:3001/api/stores', options);
 
-  // if (isLoading) return <div>Loading...</div>;
-  // if (error) return <div>Error! {error.status}</div>;
-
-  console.log(loadStores);
-  
 
   return (
     <div>
       <h1>ListStores</h1>
+      {stores.map((store) => {
+        return <ul key={store._id}>
+          <li>{store.name}</li>
+        </ul>
+      })}
+
 
 
     </div>
