@@ -1,7 +1,19 @@
-import React, { Fragment, useEffect, useState } from 'react'
+import React, { Fragment, useEffect, useState } from 'react';
 import { Service } from '../../helpers/interfaces';
+import { pruebas, func } from '../../features/counter/test';
 
-const ListServices = () => {
+const ListServices = (_props: any) => {
+
+  console.log(_props);
+
+  const aaa = pruebas;
+  console.log(aaa);
+
+  const resultado = func;
+  console.log(resultado());
+  
+  
+  
   const [services, setServices] = useState<Service[]>([]);
 
   const loadServices = async () => {

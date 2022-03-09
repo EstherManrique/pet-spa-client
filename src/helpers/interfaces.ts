@@ -14,4 +14,11 @@ interface Service extends Store {
   price: number
 }
 
-export type { Store, Service }
+interface LoginCredentials extends Store {
+  userName: string,
+  email: string,
+  password: string,
+  roles: string[]
+}
+
+export type { Store, Service, LoginCredentials }
