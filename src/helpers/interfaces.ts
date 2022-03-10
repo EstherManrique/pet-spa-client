@@ -21,4 +21,11 @@ interface LoginCredentials extends Store {
   roles: string[]
 }
 
-export type { Store, Service, LoginCredentials }
+interface Request {
+  user: any;
+}
+interface Response {
+  user: any;
+}
+
+export type { Store, Service, LoginCredentials, Request, Response }
