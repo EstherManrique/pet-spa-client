@@ -1,24 +1,22 @@
 const API_URL = '/api/users/';
 
 // Register user
-const requestOptions = {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({ title: 'React POST Request Example' })
-};
-
 // const register = async (userData: RequestInit | undefined) antes de cambiarlo .js
 const register = async (userData) => {
-  const response = await fetch({
-    API_URL, 
-    userData,
-    requestOptions
+  const response = await fetch('/api/auth/register', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(userData)
   });
 
-  if(response.data) {
-    localStorage.setItem('user', JSON.stringify(response.data))
+  console.log(response);
+
+  if(response.token) {
+    localStorage.setItem('token', JSON.stringify(response.token))
   }
-  return response.data
+  return response.token
 }
 
 // Login user
